@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Meu nome é Yoshikage Kira. Tenho 33 anos. Minha casa fica na região nordeste de Morioh, onde ficam todas as vilas, e não sou casado. Trabalho como funcionário da loja de departamentos Kame Yu e chego em casa todos os dias no máximo às 20h. Não fumo, mas bebo ocasionalmente. Estou na cama às 23h e me certifico de dormir oito horas, aconteça o que acontecer. Depois de tomar um copo de leite morno e fazer uns vinte minutos de alongamento antes de dormir, geralmente não tenho problemas para dormir até de manhã. Assim como um bebê, acordo sem fadiga ou estresse pela manhã. Disseram-me que não houve problemas no meu último check-up. Estou tentando explicar que sou uma pessoa que deseja viver uma vida tranquila. Tomo cuidado para não me incomodar com inimigos, como ganhar e perder, que me fariam perder o sono à noite. É assim que lido com a sociedade e sei que é isso que me traz felicidade. Embora, se eu fosse lutar, não perderia para ninguém.</h1>
+    <ul id="minhalista">
+
+    </ul>
+    <script>
+        async function buscaDados(){
+            const resposta = await fetch("http://localhost:8000/estudantes")
+            console.log(resposta)
+            if(resposta.status ===200){
+                const dados = await resposta.json()
+                console.log(dados)
+                console.log(dados[0].nome)
+                //Criem li a partir do vetor dados
+                //Coloque o texto que vem do banco no li
+                //Adicione o li na ul com id "minhalista" 
+            }else{
+                if(resposta.status ===400){
+                    const dados = await resposta.json()
+                    alert(dados.mensagem)
+                }
+                else{
+                    alert("ERRO NÃO IDENTIFICADO");
+                }
+            }
+        }
+        buscaDados()
+    </script>
+</body>
+</html>
